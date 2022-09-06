@@ -41,7 +41,7 @@ public class ArrayListPractice {
      * @return The sum of the elements in the list.
      */
     public static int GetSum(ArrayList<Integer> numbers) {
-        int sum;
+        int sum = 0;
         for (int i = 0; i < numbers.size(); i++){
             sum += numbers.get(i);
         }
@@ -98,9 +98,11 @@ public class ArrayListPractice {
      */
     public static ArrayList<Integer> CreateNumberArray(int first, int last) {
         ArrayList<Integer> newL= new ArrayList<Integer>();
-
+        for (int i = first; i < last; i++){
+            newL.add(i);
+        }
+        return newL;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -111,9 +113,13 @@ public class ArrayListPractice {
      * @return The first student whose favorite color is the one specified.
      */
     public static Student GetFirstStudentWithFavoriteColor(ArrayList<Student> students, String color) {
-
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).GetFavoriteColor().equals(color)){
+                return students.get(i);
+            }
+        }
+        return null;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -124,9 +130,13 @@ public class ArrayListPractice {
      * @return The favorite color of the specified student.
      */
     public static String GetFavoriteColorOfStudent(ArrayList<Student> students, String name) {
-
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).GetName().equals(name)){
+                return students.get(i).GetFavoriteColor();
+            }
+        }
+        return null;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -136,9 +146,14 @@ public class ArrayListPractice {
      * @return The tallest student in the list.
      */
     public static Student GetTallestStudent(ArrayList<Student> students) {
-
+        Student max = students.get(0);
+        for (int i = 1; i < students.size(); i++){
+            if (students.get(i).GetHeight() > max.GetHeight()){
+                max = students.get(i);
+            }
+        }
+        return max;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -154,9 +169,13 @@ public class ArrayListPractice {
      * @return List of Student objects.
      */
     public static ArrayList<Student> CreateStudentArray(ArrayList<String> names, ArrayList<Integer> heights, ArrayList<Integer> gradeLevels, ArrayList<String> favoriteColors, ArrayList<BankAccount> bankAccounts) {
-
+        ArrayList<Student> nArray = new ArrayList<Student>();
+        for (int i = 0; i < names.size(); i++){
+            Student x = new Student(names.get(i), heights.get(i), gradeLevels.get(i), favoriteColors.get(i), bankAccounts.get(i));
+            nArray.add(x);
+        }
+        return nArray;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -172,9 +191,15 @@ public class ArrayListPractice {
      * @return A string that lists the team number followed by each team.
      */
     public static String GetTeamsString(ArrayList<ArrayList<Student>> teams) {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        String str = "";
+        for (int i = 0; i < teams.size(); i++){
+            str += "Team " + (i+1) + ": ";
+            for (int x = 0; x < teams.get(x).size(); x++){
+                str += teams.get(i).get(x).GetName() + " ";
+            }
+            str += "\n";
+        }
+        return str;
     }
 
     /**
@@ -185,9 +210,11 @@ public class ArrayListPractice {
      * @param newFavoriteColor The new favorite color of the student.
      */
     public static void UpdateFavoriteColor(ArrayList<Student> students, String name, String newFavoriteColor) {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).GetName().equals(name)){
+                students.get(i).SetFavoriteColor(newFavoriteColor);
+            }
+        }
     }
 
     /**
@@ -198,9 +225,13 @@ public class ArrayListPractice {
      * @return An ArrayList containing all the students in gradeLevel.
      */
     public static ArrayList<Student> GetStudentsInGradeLevel(ArrayList<Student> students, int gradeLevel) {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        ArrayList<Student> gStudents = new ArrayList<Student>();
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).GetGradeLevel() == gradeLevel){
+                gStudents.add(students.get(i));
+            }
+        }
+        return gStudents;
     }
 
     /**
@@ -214,6 +245,14 @@ public class ArrayListPractice {
      *     had sufficient funds in their account. Otherwise, false.
      */
     public static boolean TransferMoney(ArrayList<Student> students, String fromStudentName, String toStudentName, double amount) {
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).GetName().equals(fromStudentName)){
+                students.get(i).GetBankAccount().Withdraw(amount);
+            }
+            else if (students.get(i).GetName().equals(toStudentName)){
+                students.get(i).GetBankAccount().Deposit(amount);
+            }
+        }
 
         // write your code above and remove the line below
         throw new UnsupportedOperationException();
