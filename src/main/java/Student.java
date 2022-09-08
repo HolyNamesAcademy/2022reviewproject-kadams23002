@@ -32,6 +32,8 @@ public class Student {
     public void SetGradeLevel(int gradeLevel) { this.gradeLevel = gradeLevel; }
     public void SetFavoriteColor(String favoriteColor) { this.favoriteColor = favoriteColor; }
 
+
+
     // define comparison
     public boolean equals(Object other) {
         // If points to the same object, return true

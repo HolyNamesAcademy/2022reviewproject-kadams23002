@@ -10,9 +10,8 @@ public class BankAccount {
      * @param in_accountBalance The starting balance for the account.
      */    public BankAccount(String in_name, double in_accountBalance)
     {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        name = in_name;
+        accountBalance = in_accountBalance;
     }
 
     /**
@@ -20,9 +19,7 @@ public class BankAccount {
      */
     public String GetName()
     {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        return name;
     }
 
     /**
@@ -30,9 +27,7 @@ public class BankAccount {
      */
     public double GetBalance()
     {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        return accountBalance;
     }
 
     /**
@@ -47,9 +42,14 @@ public class BankAccount {
      */
     public double Deposit(double amount)
     {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        if (amount < 0){
+            System.out.println("Sorry, the amount deposited must be greater than 0.");
+            return 0;
+        }
+        else {
+            accountBalance += amount;
+            return amount;
+        }
     }
 
     /**
@@ -67,9 +67,11 @@ public class BankAccount {
      */
     public double Withdraw(double amount)
     {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        if (amount > 0 && amount <= accountBalance){
+            accountBalance = accountBalance - amount;
+            return amount;
+        }
+        return 0;
     }
 
     /**
@@ -87,9 +89,17 @@ public class BankAccount {
      */
     public double AddInterest(int numYears, double interestRate)
     {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        if (numYears <= 0){
+            System.out.println("Sorry, the number of years must be an integer greater than 0.");
+        }
+        if (interestRate <= 0){
+            System.out.println("Sorry, the interest rate must be greater than ).");
+        }
+        else if (interestRate > 0 && numYears > 0){
+            double i = accountBalance * numYears * interestRate;
+            return i;
+        }
+        return 0;
     }
 
     /**
@@ -102,9 +112,8 @@ public class BankAccount {
      */
     public String toString()
     {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        String x = "Name: " + name + "\n" + "Account Balance: " + accountBalance;
+        return x;
     }
 
     /**
