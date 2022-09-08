@@ -97,6 +97,7 @@ public class BankAccount {
         }
         else if (interestRate > 0 && numYears > 0){
             double i = accountBalance * numYears * interestRate;
+            accountBalance += i;
             return i;
         }
         return 0;
