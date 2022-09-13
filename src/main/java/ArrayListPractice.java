@@ -194,10 +194,13 @@ public class ArrayListPractice {
         String str = "";
         for (int i = 0; i < teams.size(); i++){
             str += "Team " + (i+1) + ": ";
-            for (int x = 0; x < teams.get(x).size(); x++){
-                str += teams.get(i).get(x).GetName() + " ";
+            for (int x = 0; x < teams.get(i).size(); x++){
+                if (x != teams.get(i).size()-1){
+                    str += teams.get(i).get(x).GetName() + ", ";
+                }
+                else
+                    str += teams.get(i).get(x).GetName() + "\n";
             }
-            str += "\n";
         }
         return str;
     }
@@ -245,17 +248,27 @@ public class ArrayListPractice {
      *     had sufficient funds in their account. Otherwise, false.
      */
     public static boolean TransferMoney(ArrayList<Student> students, String fromStudentName, String toStudentName, double amount) {
+        if (amount < 0){
+            return false;
+        }
+        int fromCheck = -1;
+        int toCheck = -1;
         for (int i = 0; i < students.size(); i++){
             if (students.get(i).GetName().equals(fromStudentName)){
-                students.get(i).GetBankAccount().Withdraw(amount);
+               if (students.get(i).GetBankAccount().GetBalance() >= amount){
+                   fromCheck = i;
+               }
             }
             else if (students.get(i).GetName().equals(toStudentName)){
-                students.get(i).GetBankAccount().Deposit(amount);
+               toCheck = i;
             }
         }
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        if ((fromCheck != -1) && (toCheck != -1)){
+            students.get(fromCheck).GetBankAccount().Withdraw(amount);
+            students.get(toCheck).GetBankAccount().Deposit(amount);
+            return true;
+        }
+        return false;
     }
 
     /**
