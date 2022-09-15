@@ -17,7 +17,7 @@ public class ShapeMaker {
         String str = "";
         for (int i = 0; i < size; i++){
             for (int x = 0; x < size; x++){
-                str += "*";
+                str += "* ";
             }
             str += "\n";
         }
@@ -41,7 +41,7 @@ public class ShapeMaker {
         String str = "";
         for (int i = 0; i < height; i++){
             for (int x = 0; x < length; x++){
-                str += "*";
+                str += "* ";
             }
             str += "\n";
         }
@@ -63,8 +63,14 @@ public class ShapeMaker {
      */
     public static String PrintRightTriangle(int height)
     {
-        // write your code here
-        return "";
+        String str = "";
+        for (int i = 1; i <= height; i++){
+            for (int x = 0; x < i; x++){
+                str += "* ";
+            }
+            str += "\n";
+        }
+        return str;
     }
 
     /**
@@ -81,8 +87,15 @@ public class ShapeMaker {
      */
     public static String PrintInvertedRightTriangle(int height)
     {
+        String str = "";
+        for (int i = height; i > 0; i--){
+            for (int x = i; x > 0; x--){
+                str += "* ";
+            }
+            str += "\n";
+        }
         // write your code here
-        return "";
+        return str;
     }
 
     /**
@@ -100,8 +113,9 @@ public class ShapeMaker {
 
     public static String PrintBackwardsRightTriangle(int height)
     {
-        // write your code here
-        return "";
+        String str = "";
+
+        return str;
     }
 
     /**
@@ -118,7 +132,24 @@ public class ShapeMaker {
      */
     public static String PrintEquilateralTriangle(int height)
     {
-        // write your code here
-        return "";
+        if (height == 0){
+            return "";
+        }
+        String str = "";
+        int space;
+        for (int i = 1; i <= height; i++){
+            space = (height/2) - i;
+            for (int x = space; x > 0; x--){
+                str += "  ";
+            }
+            for (int star = i; star <= height; star++){
+                str += "* ";
+            }
+            for (int y = space; y > 0; y--){
+                str += "  ";
+            }
+            str += "\n";
+        }
+        return str;
     }
 }
