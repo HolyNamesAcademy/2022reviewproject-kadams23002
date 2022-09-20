@@ -278,9 +278,14 @@ public class ArrayListPractice {
      * @param students The list of students to advance to the next grade.
      */
     public static void UpdateGradeLevels(ArrayList<Student> students) {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        for (int i = students.size()-1; i >= 0; i--){
+            if (students.get(i).GetGradeLevel() == 12){
+                students.remove(i);
+            }
+            else {
+                students.get(i).SetGradeLevel(students.get(i).GetGradeLevel() + 1);
+            }
+        }
     }
 
     /**
@@ -293,7 +298,5 @@ public class ArrayListPractice {
      */
     public static void SortByGradeAndName(ArrayList<Student> students) {
 
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 }
