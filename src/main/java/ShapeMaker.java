@@ -114,7 +114,21 @@ public class ShapeMaker {
     public static String PrintBackwardsRightTriangle(int height)
     {
         String str = "";
-
+        for (int i = 0; i < height; i++){
+            //prints out spaces
+            for (int x = height - (i+1); x > 0; x--){
+                str += "  ";
+            }
+            //prints out stars
+            for (int y = 0; y <= i; y++){
+                if (y < i){
+                    str += "* ";
+                }
+                else
+                str += "*";
+            }
+            str += "\n";
+        }
         return str;
     }
 
@@ -136,17 +150,14 @@ public class ShapeMaker {
             return "";
         }
         String str = "";
-        int space;
-        for (int i = 1; i <= height; i++){
-            space = (height/2) - i;
-            for (int x = space; x > 0; x--){
-                str += "  ";
+        for (int i = 0; i < height; i++){
+            //prints spaces to the left
+            for (int x = 1; x < height - i; x++){
+                str += " ";
             }
-            for (int star = i; star <= height; star++){
-                str += "* ";
-            }
-            for (int y = space; y > 0; y--){
-                str += "  ";
+            //prints stars
+            for (int s = 0; s <= i; s++){
+                    str += "* ";
             }
             str += "\n";
         }
