@@ -297,6 +297,17 @@ public class ArrayListPractice {
      * @param students The list of students to sort.
      */
     public static void SortByGradeAndName(ArrayList<Student> students) {
-
+        for(int i = 0; i < students.size(); i++){
+            int min = i;
+            for(int x = i+1; x < students.size(); x++){
+                if ((students.get(x).GetGradeLevel() < students.get(i).GetGradeLevel()) && (students.get(x).GetName().substring(0,1).compareTo(students.get(i).GetName().substring(0,1)) <= 0)){
+                   min = x;
+                   Student temp = students.get(i);
+                   students.add(i,students.get(x));
+                   students.remove(i);
+                   students.add(x,temp);
+                }
+            }
+        }
     }
 }
